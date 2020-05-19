@@ -5,17 +5,26 @@
     <title>Users</title>
 </head>
 <body>
-<table border="1" >
+<table border="1" align="center">
+    <caption>Пользователи</caption>
     <tr>
-        <td>Имя</td><td>Фамилия</td><td>Возраст</td>
+        <td align="center">Имя</td> <td>Фамилия</td><td>Возраст</td><td>Изменить</td><td>Удалить</td>
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
             <td>${user.getName()}</td>
             <td>${user.getSurname()}</td>
             <td>${user.getAge()}</td>
+            <form>
+                <input type="hidden" name="id" value="${user.getId()}">
+                <td><div align="center"><input type="submit" value="Изменить" formaction="/update" formmethod="get"></div></td>
+                <td><div align="center"><input type="submit" value="Удалить" formaction="/users" formmethod="post"></div></td>
+            </form>
         </tr>
     </c:forEach>
 </table>
+<div align="center"><form action="/add" method="get">
+    <input type="submit" value="Добавить">
+</form></div>
 </body>
 </html>
