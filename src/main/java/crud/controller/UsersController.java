@@ -5,9 +5,7 @@ import crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,14 +15,14 @@ public class UsersController {
     @Autowired
     UserService service;
 
-    @RequestMapping(value = "users", method = RequestMethod.GET)
+    @GetMapping("/users")
     public String printUsers(ModelMap model) {
         List<User> users = service.list();
         model.addAttribute("users", users);
         return "users";
     }
 
-    @RequestMapping(value = "users", method = RequestMethod.POST)
+    @PostMapping("/users")
     public String deleteUser(@RequestParam(name = "id") Long id, ModelMap model) {
         service.delete(id);
         List<User> users = service.list();
@@ -32,17 +30,31 @@ public class UsersController {
         return "users";
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.GET)
+    @GetMapping("/update")
     public String printUserForUpdate(@RequestParam(name = "id") Long id, ModelMap model) {
         User user = service.get(id);
         model.addAttribute("user", user);
         return "update";
     }
 
-    @RequestMapping(value = "update", method = RequestMethod.POST)
+    @PostMapping("/update")
     public String updateUser(@RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,
                              @RequestParam(name = "surname") String surname, @RequestParam(name = "age") byte age, ModelMap model) {
         service.set(new User(id, name, surname, age));
+        List<User> users = service.list();
+        model.addAttribute("users", users);
+        return "users";
+    }
+
+    @GetMapping("/add")
+    public String printAddUser(ModelMap model) {
+        return "add";
+    }
+
+    @PostMapping("/add")
+    public String AddUser(@RequestParam(name = "name") String name, @RequestParam(name = "surname") String surname,
+                          @RequestParam(name = "age") byte age,ModelMap model) {
+        service.add(new User(name, surname, age));
         List<User> users = service.list();
         model.addAttribute("users", users);
         return "users";
