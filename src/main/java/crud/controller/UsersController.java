@@ -38,9 +38,10 @@ public class UsersController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@RequestParam(name = "id") Long id, @RequestParam(name = "name") String name,
+    public String updateUser(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username,
+                             @RequestParam(name = "password") String password, @RequestParam(name = "name") String name,
                              @RequestParam(name = "surname") String surname, @RequestParam(name = "age") byte age, ModelMap model) {
-        service.set(new User(id, name, surname, age));
+        service.set(new User(id, username, password, name, surname, age));
         List<User> users = service.list();
         model.addAttribute("users", users);
         return "users";
@@ -52,9 +53,10 @@ public class UsersController {
     }
 
     @PostMapping("/add")
-    public String AddUser(@RequestParam(name = "name") String name, @RequestParam(name = "surname") String surname,
+    public String AddUser(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password,
+                          @RequestParam(name = "name") String name, @RequestParam(name = "surname") String surname,
                           @RequestParam(name = "age") byte age,ModelMap model) {
-        service.add(new User(name, surname, age));
+        service.add(new User(username, password, name, surname, age));
         List<User> users = service.list();
         model.addAttribute("users", users);
         return "users";

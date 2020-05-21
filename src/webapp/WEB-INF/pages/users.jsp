@@ -8,13 +8,21 @@
 <table border="1" align="center">
     <caption>Пользователи</caption>
     <tr>
-        <td align="center">Имя</td> <td>Фамилия</td><td>Возраст</td><td>Изменить</td><td>Удалить</td>
+        <td align="center">Пользователь</td><td align="center">Пароль</td><td align="center">Имя</td><td>Фамилия</td><td>Возраст</td><td>Роли</td>
+        <td>Изменить</td><td>Удалить</td>
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
+            <td>${user.getUsername()}</td>
+            <td>${user.getPassword()}</td>
             <td>${user.getName()}</td>
             <td>${user.getSurname()}</td>
             <td>${user.getAge()}</td>
+            <td>
+                <c:forEach var="role" items="${user.getRoles()}">
+                    ${role.getRole()}
+                </c:forEach>
+            </td>
             <form>
                 <input type="hidden" name="id" value="${user.getId()}">
                 <td><div align="center"><input type="submit" value="Изменить" formaction="/update" formmethod="get"></div></td>

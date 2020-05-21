@@ -28,6 +28,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void set(User user) {
         User u = sessionFactory.getCurrentSession().get(User.class, user.getId());
+        u.setUsername(user.getUsername());
+        u.setPassword(user.getPassword());
         u.setName(user.getName());
         u.setSurname(user.getSurname());
         u.setAge(user.getAge());

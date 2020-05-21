@@ -1,6 +1,8 @@
 package crud.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -8,6 +10,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "name")
     private String name;
@@ -18,17 +26,27 @@ public class User {
     @Column(name = "age")
     private byte age;
 
+    @Column(name = "enabled")
+    private byte enabled;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Role> roles = new ArrayList<>();
+
     public User() {
     }
 
-    public User(String name, String surname, byte age) {
+    public User(String username, String password, String name, String surname, byte age) {
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.surname = surname;
         this.age = age;
     }
 
-    public User(Long id, String name, String surname, byte age) {
+    public User(Long id, String username, String password, String name, String surname, byte age) {
         this.id = id;
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -64,5 +82,37 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public byte getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(byte enabled) {
+        this.enabled = enabled;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
