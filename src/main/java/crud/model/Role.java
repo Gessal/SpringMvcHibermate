@@ -56,6 +56,10 @@ public class Role implements GrantedAuthority {
         this.role = role;
     }
 
+    /* Переопределяю метод интерфейса GrantedAuthority,
+    *  который возрващает роль пользователя из базы.
+    *  Роли в базе записаны как ROLE_ADMIN и ROLE_USER,
+    *  т.к. ROLE_ - это префикс по умолчанию.*/
     @Override
     public String getAuthority() {
         return role;

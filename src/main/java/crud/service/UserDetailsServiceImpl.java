@@ -12,6 +12,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
+    /* Переопределяю метод интерфейса UserDetailService,
+    *  возвращающий объект пользователя, реализующего интерфейс UserDetails */
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         UserDetails user = userDao.getByUserName(s);
