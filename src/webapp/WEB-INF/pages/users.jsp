@@ -31,8 +31,11 @@
         </tr>
     </c:forEach>
 </table>
-<div align="center"><form action="/admin/add" method="get">
-    <input type="submit" value="Добавить">
-</form></div>
+<div align="center">
+    <form action="/admin/add" method="get">
+        <input type="submit" value="Добавить">
+    </form>
+</div>
+<a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

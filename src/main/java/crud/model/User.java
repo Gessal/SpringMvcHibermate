@@ -113,6 +113,7 @@ public class User implements UserDetails {
     public void setUsername(String username) {
         this.username = username;
     }
+
     /* Переопределяю методы интерфейса UserDetails */
     @Override
     public boolean isAccountNonExpired() {
