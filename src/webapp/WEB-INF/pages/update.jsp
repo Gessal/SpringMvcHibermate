@@ -13,6 +13,7 @@
         <tr> <td>Имя:</td> <td><input type="text" name="name" size="25" value="${u.getName()}"> </td></tr>
         <tr> <td>Фамилия:</td> <td><input type="text" name="surname" size="25" value="${u.getSurname()}"> </td></tr>
         <tr> <td>Возраст:</td> <td><input type="number" name="age" size="8" value="${u.getAge()}"> </td></tr>
+        <tr> <td>Активирован:</td> <td><input type="number" name="enabled" size="1" value="${u.getEnabled()}"> </td></tr>
         <input type="hidden" name="id" value="${u.getId()}">
     </table>
     <input type="submit" value="Изменить">

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
-public class UsersController {
+@RequestMapping("/admin/*")
+public class AdminController {
     @Autowired
     UserService service;
 
@@ -40,8 +40,9 @@ public class UsersController {
     @PostMapping("/update")
     public String updateUser(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username,
                              @RequestParam(name = "password") String password, @RequestParam(name = "name") String name,
-                             @RequestParam(name = "surname") String surname, @RequestParam(name = "age") byte age, ModelMap model) {
-        service.set(new User(id, username, password, name, surname, age));
+                             @RequestParam(name = "surname") String surname, @RequestParam(name = "age") byte age,
+                             @RequestParam(name = "age") byte enabled, ModelMap model) {
+        service.set(new User(id, username, password, name, surname, age, enabled));
         List<User> users = service.list();
         model.addAttribute("users", users);
         return "users";

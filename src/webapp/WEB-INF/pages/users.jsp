@@ -25,13 +25,13 @@
             </td>
             <form>
                 <input type="hidden" name="id" value="${user.getId()}">
-                <td><div align="center"><input type="submit" value="Изменить" formaction="/update" formmethod="get"></div></td>
-                <td><div align="center"><input type="submit" value="Удалить" formaction="/users" formmethod="post"></div></td>
+                <td><div align="center"><input type="submit" value="Изменить" formaction="/admin/update" formmethod="get"></div></td>
+                <td><div align="center"><input type="submit" value="Удалить" formaction="/admin/users" formmethod="post"></div></td>
             </form>
         </tr>
     </c:forEach>
 </table>
-<div align="center"><form action="/add" method="get">
+<div align="center"><form action="/admin/add" method="get">
     <input type="submit" value="Добавить">
 </form></div>
 </body>
