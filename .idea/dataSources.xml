@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="spring_crud@localhost" uuid="d12ec48f-0772-4dad-8af8-2ebf33661101">
+    <data-source source="LOCAL" name="MySQL - spring_crud@localhost" uuid="d12ec48f-0772-4dad-8af8-2ebf33661101">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/spring_crud</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="spring_crud0@localhost" uuid="963a35c1-c120-459b-a017-172d42e2b650">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/spring_crud0</jdbc-url>
     </data-source>
   </component>
 </project>
