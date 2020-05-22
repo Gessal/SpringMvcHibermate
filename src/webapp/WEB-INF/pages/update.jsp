@@ -18,5 +18,6 @@
     </table>
     <input type="submit" value="Изменить">
 </form></div>
+<jsp:include page="logout_block.jsp" />
 </body>
 </html>

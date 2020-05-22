@@ -10,6 +10,5 @@
     <input name="j_password"/>
     <input type="submit"/>
 </form>
-
 </body>
 </html>

@@ -14,5 +14,6 @@
     </table>
     <input type="submit" value="Добавить">
 </form></div>
+<jsp:include page="logout_block.jsp" />
 </body>
 </html>

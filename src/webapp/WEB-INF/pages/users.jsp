@@ -36,6 +36,6 @@
         <input type="submit" value="Добавить">
     </form>
 </div>
-<a href="<c:url value="/logout" />">Logout</a>
+<jsp:include page="logout_block.jsp" />
 </body>
 </html>

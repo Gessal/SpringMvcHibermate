@@ -13,6 +13,6 @@
         <tr> <td>Фамилия:</td> <td>${u.getSurname()}</td></tr>
         <tr> <td>Возраст:</td> <td>${u.getAge()}</td></tr>
     </table>
-    <a href="<c:url value="/logout" />">Logout</a>
+    <jsp:include page="logout_block.jsp" />
 </body>
 </html>
