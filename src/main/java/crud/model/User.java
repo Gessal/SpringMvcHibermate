@@ -34,7 +34,7 @@ public class User implements UserDetails {
     @Column(name = "enabled")
     private byte enabled;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Role> roles = new ArrayList<>();
 
     public User() {

@@ -3,13 +3,22 @@
 <html>
 <head>
     <title>Users</title>
+    <style>
+        li {
+            list-style-type: none;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
 <table border="1" align="center">
     <caption>Пользователи</caption>
     <tr>
         <td align="center">Пользователь</td><td align="center">Пароль</td><td align="center">Имя</td><td>Фамилия</td><td>Возраст</td><td>Роли</td>
-        <td>Изменить</td><td>Удалить</td>
+        <td>Активен</td><td>Изменить</td><td>Удалить</td>
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
@@ -19,9 +28,19 @@
             <td>${user.getSurname()}</td>
             <td>${user.getAge()}</td>
             <td>
+                <ul>
                 <c:forEach var="role" items="${user.getRoles()}">
-                    ${role.getRole()}
+                    <li>${role.getRole()}</li>
                 </c:forEach>
+                </ul>
+            </td>
+            <td>
+                <c:if test="${user.getEnabled() <= 0}">
+                    <div align="center">Нет</div>
+                </c:if>
+                <c:if test="${user.getEnabled() > 0}">
+                    <div align="center">Да</div>
+                </c:if>
             </td>
             <form>
                 <input type="hidden" name="id" value="${user.getId()}">

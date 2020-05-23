@@ -12,6 +12,16 @@
         <tr> <td>Имя:</td> <td>${u.getName()}</td></tr>
         <tr> <td>Фамилия:</td> <td>${u.getSurname()}</td></tr>
         <tr> <td>Возраст:</td> <td>${u.getAge()}</td></tr>
+        <tr> <td>Активен:</td>
+             <td>
+                <c:if test="${user.getEnabled() <= 0}">
+                    Нет
+                </c:if>
+                <c:if test="${user.getEnabled() > 0}">
+                    Да
+                </c:if>
+            </td>
+        </tr>
     </table>
     <jsp:include page="logout_block.jsp" />
 </body>
