@@ -95,6 +95,7 @@ public class AdminController {
             roles.add(new Role("ROLE_ADMIN"));
         }
         user.setRoles(roles);
+        user.setEnabled((byte) 1);
         service.add(user);
         List<User> users = service.list();
         model.addAttribute("users", users);

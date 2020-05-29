@@ -18,6 +18,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void add(User user) {
+        String password = user.getPassword();
+        user.setPassword(new BCryptPasswordEncoder().encode(password));
         sessionFactory.getCurrentSession().save(user);
     }
 
