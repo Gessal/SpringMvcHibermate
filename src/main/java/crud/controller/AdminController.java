@@ -12,23 +12,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     UserService service;
 
-    @GetMapping("/admin")
+    @GetMapping
     public String admin() {
         return "admin";
     }
 
-    @GetMapping("/admin/users")
+    @GetMapping("/users")
     public String printUsers(ModelMap model) {
         List<User> users = service.list();
         model.addAttribute("users", users);
         return "users";
     }
 
-    @PostMapping("/admin/users")
+    @PostMapping("/users")
     public String deleteUser(@RequestParam(name = "id") Long id, ModelMap model) {
         service.delete(id);
         List<User> users = service.list();
@@ -36,7 +37,7 @@ public class AdminController {
         return "users";
     }
 
-    @GetMapping("/admin/update")
+    @GetMapping("/update")
     public String printUserForUpdate(@RequestParam(name = "id") Long id, ModelMap model) {
         User user = service.get(id);
         boolean isUser = false;
@@ -54,7 +55,7 @@ public class AdminController {
         return "update";
     }
 
-    @PostMapping("/admin/update")
+    @PostMapping("/update")
     public String updateUser(@RequestParam(name = "id") Long id, @RequestParam(name = "username") String username,
                              @RequestParam(name = "password") String password, @RequestParam(name = "name") String name,
                              @RequestParam(name = "surname") String surname, @RequestParam(name = "age") byte age,
@@ -76,12 +77,12 @@ public class AdminController {
         return "users";
     }
 
-    @GetMapping("/admin/add")
+    @GetMapping("/add")
     public String printAddUser(ModelMap model) {
         return "add";
     }
 
-    @PostMapping("/admin/add")
+    @PostMapping("/add")
     public String AddUser(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password,
                           @RequestParam(name = "name") String name, @RequestParam(name = "surname") String surname,
                           @RequestParam(name = "age") byte age, @RequestParam(name = "isUser", required = false) boolean isUser,
