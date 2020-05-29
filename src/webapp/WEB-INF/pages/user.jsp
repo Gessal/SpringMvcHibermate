@@ -8,7 +8,6 @@
     <table>
         <c:set var="u" value="${user}"/>
         <tr> <td>Пользователь:</td> <td>${u.getUsername()}</td></tr>
-        <tr> <td>Пароль:</td> <td>${u.getPassword()}</td></tr>
         <tr> <td>Имя:</td> <td>${u.getName()}</td></tr>
         <tr> <td>Фамилия:</td> <td>${u.getSurname()}</td></tr>
         <tr> <td>Возраст:</td> <td>${u.getAge()}</td></tr>

@@ -3,6 +3,7 @@ package crud.dao;
 import crud.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
@@ -38,7 +39,10 @@ public class UserDaoImpl implements UserDao {
     public void set(User user) {
         User u = sessionFactory.getCurrentSession().get(User.class, user.getId());
         u.setUsername(user.getUsername());
-        u.setPassword(user.getPassword());
+        String password = user.getPassword();
+        if (!(password == null) && !password.equals("")) {
+            u.setPassword(new BCryptPasswordEncoder().encode(password));
+        }
         u.setName(user.getName());
         u.setSurname(user.getSurname());
         u.setAge(user.getAge());
